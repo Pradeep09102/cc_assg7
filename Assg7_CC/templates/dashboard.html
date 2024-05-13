@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Dashboard</title>
+    <!-- Load Plotly library -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>COVID-19 Dashboard</h1>
+    <!-- Div element to render the Plotly graph -->
+    <div id="plotly-graph"></div>
+    <!-- JavaScript code to fetch data and create the graph -->
+    <script>
+        fetch('/data')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+            return response.json();
+        })
+        .then(graphData => {
+            // Render the Plotly graph in the 'plotly-graph' div
+            Plotly.newPlot('plotly-graph', graphData.data, {});
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    </script>
+</body>
+</html>

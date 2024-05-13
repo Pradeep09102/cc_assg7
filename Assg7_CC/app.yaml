@@ -1,0 +1,5 @@
+runtime: python39  # Specifies the Python runtime version to use
+
+handlers:
+- url: /.*  # Matches all URL paths
+  script: auto  # Automatically detects the entrypoint (main.py by default)
